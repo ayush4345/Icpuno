@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "src/Icpuno_backend"
+]
+resolver = "2"

@@ -1,0 +1,27 @@
+{
+  "canisters": {
+    "Icpuno_backend": {
+      "candid": "src/Icpuno_backend/Icpuno_backend.did",
+      "package": "Icpuno_backend",
+      "type": "rust"
+    },
+    "Icpuno_frontend": {
+      "dependencies": [
+        "Icpuno_backend"
+      ],
+      "source": [
+        "src/Icpuno_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "Icpuno_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

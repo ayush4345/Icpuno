@@ -1,0 +1,25 @@
+type Action = record { action_hash : text; player : text; timestamp : nat64 };
+type Game = record {
+  id : nat64;
+  is_started : bool;
+  turn_count : nat64;
+  direction_clockwise : bool;
+  players : vec text;
+  current_player_index : nat64;
+  is_active : bool;
+  last_action_timestamp : nat64;
+  state_hash : text;
+};
+type Result = variant { Ok; Err : text };
+type Result_1 = variant { Ok : vec Action; Err : text };
+type Result_2 = variant { Ok : Game; Err : text };
+service : () -> {
+  create_game : (text) -> (nat64);
+  end_game : (nat64, text) -> (Result);
+  get_game_actions : (nat64) -> (Result_1) query;
+  get_game_state : (nat64) -> (Result_2) query;
+  join_game : (nat64, text) -> (Result);
+  start_game : (nat64) -> (Result);
+  submit_action : (nat64, text, text) -> (Result);
+  who_am_i : () -> (principal) query;
+}
